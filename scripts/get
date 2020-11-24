@@ -78,7 +78,7 @@ verifySupported() {
 # checkDesiredVersion checks if the desired version is available.
 checkDesiredVersion() {
   # Get available tags from release URL
-  local release_url="https://github.com/helm/helm/releases\?after\=v2.9.0-rc4"
+  local release_url="https://github.com/helm/helm/releases?after=v2.9.0-rc4"
   if type "curl" > /dev/null; then
     available_tags=$(curl -Ls $release_url | grep 'href="/helm/helm/releases/tag/v2.[0-9]*.[0-9]*\"' | grep -v no-underline | cut -d '"' -f 2 | awk '{n=split($NF,a,"/");print a[n]}' | awk 'a !~ $0{print}; {a=$0}')
   elif type "wget" > /dev/null; then
